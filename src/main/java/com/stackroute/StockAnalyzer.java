@@ -17,26 +17,27 @@ public class StockAnalyzer {
      * Complete the constructor
      */
     public StockAnalyzer(String filePath) {
-
+    	this.filePath = filePath;
     }
 
     /**
      * Complete the Setters and Getters
      */
     public StockRecord[] getStockRecordList() {
-        return null;
+        return stockRecordList;
     }
 
     public void setStockRecordList(StockRecord[] stockRecordList) {
-
+    	
+    	this.stockRecordList = stockRecordList;
     }
 
     public String getFilePath() {
-        return null;
+        return filePath;
     }
 
     public void setFilePath(String filePath) {
-
+    		this.filePath = filePath;
     }
 
     /**
@@ -46,31 +47,51 @@ public class StockAnalyzer {
      * Assume that every file will have a valid header
      */
     public int validStockRecordCount() throws FileNotFoundException, NoRecordFoundException {
-        return -1;
+        int amt = 0;
+        for(stockRecord[] stockRecordList: stockRecordList) {
+        	if(stockRecordList != null) {
+        		amt++;
+        	}
+        }
+    	
+    	return amt;
     }
 
     /* This method is responsible to read from the file and load the array stockRecordList with valid Records*/
     public void loadRecordsFromFile() throws IOException, ParseException, NoRecordFoundException {
-
+    	 for(stockRecord[] stockRecordList: stockRecordList) {
+         	if(stockRecordList != null) {
+         		return stockRecordList;
+         	}
+         }
     }
 
     /* This method is used to find Net return percentage between the first and last record.
        The return should be based on the closing price */
     public double findNetReturn() throws StockRecordNotFoundException {
-        return -1;
+        double returnPercentage = 0;
+        returnPercentage = (stockRecordList.getOpeningPrice() - stockRecordList.getClosingPrice()) / stockRecordList.getOpeningPrice()*100;
+    	
+    	return returnPercentage;
 
     }
 
     /* This method is used to find the closing stock price on a given date.
      * Appropriate exceptions should be thrown*/
     public double findClosingStockPrice(String date) throws StockRecordNotFoundException, InvalidDateException {
-        return -1;
+    	for(stockRecord[] stockRecordList: stockRecordList) {
+         	if(stockRecordList != null) {
+         		return stockRecordList.getClosingPrice();
+         	}
+         }
     }
 
     /* This method is used to find Net return percentage between the two dates.
        The return should be based on the closing price */
     public double findNetReturn(String fromDate, String toDate) throws StockRecordNotFoundException, InvalidDateException {
-        return -1;
+        
+    	// unsure of how to do use dates.
+    	return -1;
     }
 
     /**
@@ -85,10 +106,20 @@ public class StockAnalyzer {
 
     /* this is used to find the lowest closing price for the stock */
     public double findHighestClosingStockPrice() {
-        return -1;
+        int highestPrice = 0;
+        for(stockRecord[] stockRecordList: stockRecordList) {
+         	if(stockRecordList != null) {
+         		if(highestPrice < stockRecordList.getClosingPrice()) {
+         			highestPrice = stockRecordList.getClosingPrice();
+         		}
+         	}
+        }	
+         	return highestPrice;	
+        
     }
 
     /* this method takes an Array of Stock Records as input and returns that Array with records sorted in ascending order by date */
+ // unsure of how to do use dates.
     public StockRecord[] sortByDate(StockRecord[] stockRecords) {
         return null;
     }
@@ -98,6 +129,7 @@ public class StockAnalyzer {
     *  If we have to find the daily return between 2020-03-01(d1)
     * and 2020-03-02(d2), the formula is:
 	      daily return = (d2-d1)/d1*/
+ // unsure of how to do use dates.
     public double findAvgDailyReturn() {
         return -1;
 
